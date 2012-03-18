@@ -8,7 +8,15 @@ Bundle() {
 # Install or update all bundles
 BundleInstall() {
   for bundle in $zundle_bundles; do
-    zundle_install `zundle_uri $bundle`
+    local bundle_path="`zundle_path \"$bundle\"`"
+    if [[ -d "$bundle_path" ]]; then
+      echo "Updating $bundle..."
+      zundle_update "$bundle_path"
+    else
+      local uri="`zundle_uri \"$bundle\"`"
+      echo "Installing $uri..."
+      zundle_install "$uri"
+    fi
   done
 }
 
@@ -27,12 +35,22 @@ zundle_load() {
 
 zundle_rcpath() {
   local name="$1"
-  echo "$zundle_home/${name:t}/rc"
+  echo "`zundle_path \"$name\"`/rc"
+}
+
+zundle_path() {
+  local name="$1"
+  echo "$zundle_home/${name:t}"
 }
 
 zundle_install() {
   local uri="$1"
-  (cd $HOME/.zsh/bundle && git clone "$uri")
+  (cd "$HOME/.zsh/bundle" && git clone "$uri")
+}
+
+zundle_update() {
+  local bundle_path="$1"
+  (cd "$bundle_path" && git pull)
 }
 
 zundle_uri() {
