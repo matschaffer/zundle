@@ -29,13 +29,9 @@ zundle_bundles=()
 
 zundle_load() {
   local name="$1"
-  local rc_path="`zundle_rcpath \"$name\"`"
+  local bundle_path="`zundle_path \"$name\"`"
+  local rc_path="$bundle_path/rc"
   [[ -f "$rc_path" ]] && source "$rc_path"
-}
-
-zundle_rcpath() {
-  local name="$1"
-  echo "`zundle_path \"$name\"`/rc"
 }
 
 zundle_path() {
