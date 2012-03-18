@@ -1,14 +1,33 @@
-zundle_bundles=()
-
+# Specify and load a bundle
 Bundle() {
   local name="$1"
   zundle_bundles+=("$name")
+  zundle_load "$name"
 }
 
+# Install or update all bundles
 BundleInstall() {
   for bundle in $zundle_bundles; do
-    zundle_install `zundle_parse $bundle`
+    zundle_install `zundle_uri $bundle`
   done
+}
+
+#### Internals
+
+zundle_rc="${0}"
+zundle_home="${zundle_rc:h:h}"
+
+zundle_bundles=()
+
+zundle_load() {
+  local name="$1"
+  local rc_path="`zundle_rcpath \"$name\"`"
+  [[ -f "$rc_path" ]] && source "$rc_path"
+}
+
+zundle_rcpath() {
+  local name="$1"
+  echo "$zundle_home/${name:t}/rc"
 }
 
 zundle_install() {
@@ -16,7 +35,7 @@ zundle_install() {
   (cd $HOME/.zsh/bundle && git clone "$uri")
 }
 
-zundle_parse() {
+zundle_uri() {
   local name="$1"
   echo "https://github.com/$1.git"
 }
