@@ -7,7 +7,7 @@
 1. Setup [Zundle]:
 
      ```
-     $ git clone http://github.com/matschaffer/zundle.git ~/.zsh/bundle/zundle
+     $ git clone https://github.com/matschaffer/zundle.git ~/.zsh/bundle/zundle
      ```
 
 2. Configure bundles:
@@ -50,11 +50,6 @@ see [wiki](/matschaffer/zundle/wiki)
 
 * [vundle]
 
-## Also
-
-* Zundle was developed and tested with [Zsh] 7.3 on `OSX`, `Linux` and `Windows`
-* Zundle tries to be as [KISS](http://en.wikipedia.org/wiki/KISS_principle) as possible
-
 ## TODO:
 
 [Zundle] is a work in progress so any ideas/patches appreciated
@@ -62,6 +57,8 @@ see [wiki](/matschaffer/zundle/wiki)
 * Build repo of useful oh-my-zsh stuff
 * make it rock!
 
-[Zundle]:http://github.com/matshaffer/zundle
+[Zundle]:https://github.com/matschaffer/zundle
 [Zsh]:http://www.zsh.org
 [Git]:http://git-scm.com
+
+[vundle]:https://github.com/gmarik/vundle
