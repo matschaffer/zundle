@@ -17,6 +17,8 @@ BundleInstall() {
       zundle_install "$uri"
     fi
   done
+
+  LoadBundles
 }
 
 LoadBundles() {
@@ -42,8 +44,6 @@ zundle_rc="${0}"
 zundle_home="${zundle_rc:h}"
 
 zundle_bundles=()
-
-source "$zundle_home/completion.zsh"
 
 zundle_load() {
   local name="$1"
