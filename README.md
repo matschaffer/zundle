@@ -17,7 +17,11 @@
      ```sh
      source "$HOME/.zsh/bundle/zundle/rc"
 
-     Bundle 'matschaffer/zsh-matschaffer'
+     Bundle 'matschaffer/zsh-git'
+     Bundle 'matschaffer/zsh-rvm'
+     Bundle 'matschaffer/zsh-theme-gnzh'
+
+     LoadBundles
      ```
 
 3. Install configured bundles:
