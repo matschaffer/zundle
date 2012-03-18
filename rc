@@ -1,8 +1,7 @@
-# Specify and load a bundle
+# Include a bundle in your environment
 Bundle() {
   local name="$1"
   zundle_bundles+=("$name")
-  zundle_load "$name"
 }
 
 # Install or update all bundles
@@ -20,12 +19,31 @@ BundleInstall() {
   done
 }
 
+LoadBundles() {
+  # Add all defined bundles to fpath. This must be done
+  # before running compinit.
+  for bundle ($zundle_bundles); do
+    fpath=("`zundle_path \"$bundle\"`" $fpath)
+  done
+
+  # Load and run compinit
+  autoload -U compinit
+  compinit -i
+
+  # Load all of the bundles that were defined in ~/.zshrc
+  for bundle ($zundle_bundles); do
+    zundle_load "$bundle"
+  done
+}
+
 #### Internals
 
 zundle_rc="${0}"
-zundle_home="${zundle_rc:h:h}"
+zundle_home="${zundle_rc:h}"
 
 zundle_bundles=()
+
+source "$zundle_home/completion.zsh"
 
 zundle_load() {
   local name="$1"
@@ -36,7 +54,7 @@ zundle_load() {
 
 zundle_path() {
   local name="$1"
-  echo "$zundle_home/${name:t}"
+  echo "${zundle_home:h}/${name:t}"
 }
 
 zundle_install() {
