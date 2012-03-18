@@ -1,0 +1,22 @@
+zundle_bundles=()
+
+Bundle() {
+  local name="$1"
+  zundle_bundles+=("$name")
+}
+
+BundleInstall() {
+  for bundle in $zundle_bundles; do
+    zundle_install `zundle_parse $bundle`
+  done
+}
+
+zundle_install() {
+  local uri="$1"
+  (cd $HOME/.zsh/bundle && git clone "$uri")
+}
+
+zundle_parse() {
+  local name="$1"
+  echo "https://github.com/$1.git"
+}
