@@ -50,6 +50,7 @@ see [wiki](/matschaffer/zundle/wiki)
 ## Inspiration and ideas from
 
 * [vundle]
+* [oh-my-zsh]
 
 ## TODO:
 
@@ -63,3 +64,4 @@ see [wiki](/matschaffer/zundle/wiki)
 [Git]:http://git-scm.com
 
 [vundle]:https://github.com/gmarik/vundle
+[oh-my-zsh]:https://github.com/robbyrussell/oh-my-zsh
