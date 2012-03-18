@@ -23,6 +23,7 @@
 3. Install configured bundles:
 
      ```
+     $ source "$HOME/.zshrc"
      $ BundleInstall
      ```
 
