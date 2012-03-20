@@ -19,7 +19,8 @@
 
      Bundle 'matschaffer/zsh-git'
      Bundle 'matschaffer/zsh-rvm'
-     Bundle 'matschaffer/zsh-theme-gnzh'
+     Bundle 'git://github.com/matschaffer/zsh-autojump.git'
+     Bundle 'git@github.com:matschaffer/zsh-matschaffer.git'
      ```
 
 3. Install configured bundles:
