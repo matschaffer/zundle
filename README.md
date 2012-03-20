@@ -20,8 +20,6 @@
      Bundle 'matschaffer/zsh-git'
      Bundle 'matschaffer/zsh-rvm'
      Bundle 'matschaffer/zsh-theme-gnzh'
-
-     LoadBundles
      ```
 
 3. Install configured bundles:
@@ -56,12 +54,7 @@ see [wiki](/matschaffer/zundle/wiki)
 * [vundle]
 * [oh-my-zsh]
 
-## TODO:
-
 [Zundle] is a work in progress so any ideas/patches appreciated
-
-* Build repo of useful oh-my-zsh stuff
-* make it rock!
 
 [Zundle]:https://github.com/matschaffer/zundle
 [Zsh]:http://www.zsh.org

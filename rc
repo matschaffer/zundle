@@ -17,25 +17,7 @@ BundleInstall() {
       zundle_install "$uri"
     fi
   done
-
-  LoadBundles
-}
-
-LoadBundles() {
-  # Add all defined bundles to fpath. This must be done
-  # before running compinit.
-  for bundle ($zundle_bundles); do
-    fpath=("`zundle_path \"$bundle\"`" $fpath)
-  done
-
-  # Load and run compinit
-  autoload -U compinit
-  compinit -i
-
-  # Load all of the bundles that were defined in ~/.zshrc
-  for bundle ($zundle_bundles); do
-    zundle_load "$bundle"
-  done
+  zundle_load
 }
 
 #### Internals
@@ -75,4 +57,26 @@ zundle_uri() {
     echo "$name"
   fi
 }
+
+zundle_load_bundles() {
+  # Load bundles into fpath before running compinit
+  for bundle ($zundle_bundles); do
+    fpath=("`zundle_path \"$bundle\"`" $fpath)
+  done
+
+  autoload -U compinit
+  compinit -i
+
+  # Then source the bundles
+  for bundle ($zundle_bundles); do
+    zundle_load "$bundle"
+  done
 }
+
+zundle_load_once() {
+  add-zsh-hook -d precmd zundle_load_once
+  zundle_load_bundles
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook precmd zundle_load_once
