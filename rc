@@ -54,7 +54,7 @@ zundle_load() {
 
 zundle_path() {
   local name="$1"
-  echo "${zundle_home:h}/${name:t}"
+  echo "${zundle_home:h}/${name:t:r}"
 }
 
 zundle_install() {
@@ -69,5 +69,10 @@ zundle_update() {
 
 zundle_uri() {
   local name="$1"
-  echo "https://github.com/$1.git"
+  if echo "$name" | grep '^[a-z0-9][a-z0-9-]*/[^/]\+$'; then
+    echo "https://github.com/$1.git"
+  else
+    echo "$name"
+  fi
+}
 }
