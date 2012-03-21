@@ -17,7 +17,11 @@ BundleInstall() {
       zundle_install "$uri"
     fi
   done
-  zundle_load
+  zundle_load_bundles
+}
+
+LoadBundles() {
+  zundle_load_bundles
 }
 
 #### Internals
@@ -72,11 +76,3 @@ zundle_load_bundles() {
     zundle_load "$bundle"
   done
 }
-
-zundle_load_once() {
-  add-zsh-hook -d precmd zundle_load_once
-  zundle_load_bundles
-}
-
-autoload -U add-zsh-hook
-add-zsh-hook precmd zundle_load_once

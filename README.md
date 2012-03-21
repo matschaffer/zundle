@@ -21,6 +21,8 @@
      Bundle 'matschaffer/zsh-rvm'
      Bundle 'git://github.com/matschaffer/zsh-autojump.git'
      Bundle 'git@github.com:matschaffer/zsh-matschaffer.git'
+
+     LoadBundles
      ```
 
 3. Install configured bundles:
