@@ -55,7 +55,7 @@ zundle_update() {
 
 zundle_uri() {
   local name="$1"
-  if echo "$name" | grep '^[a-z0-9][a-z0-9-]*/[^/]\+$' >/dev/null; then
+  if echo "$name" | grep '^[a-zA-Z0-9][a-zA-Z0-9-]*/[^/]\+$' >/dev/null; then
     echo "https://github.com/$1.git"
   else
     echo "$name"
